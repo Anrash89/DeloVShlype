@@ -15,8 +15,15 @@
         }
 
         body {
-            /* Красный фон с эффектом затемнения (имитация кулис) */
-            background: radial-gradient(circle at center, #db3636 0%, #8a0000 100%);
+            /* === НАСТРОЙКА ФОНОВОЙ КАРТИНКИ === */
+            /* Убедитесь, что файл background.png лежит в папке images */
+            background-image: url('images/background.png'); 
+            background-size: cover; /* Растягивает картинку, чтобы покрыть весь экран */
+            background-position: center center; /* Центрирует картинку */
+            background-repeat: no-repeat; /* Запрещает повторение картинки */
+            background-attachment: fixed; /* Фон фиксируется и не скроллится вместе с кнопками (красиво на телефоне) */
+            /* ================================= */
+
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,30 +37,37 @@
             width: 100%;
             max-width: 480px; 
             text-align: center;
+            /* Добавим легкую подложку, если фон слишком пестрый, чтобы текст читался */
+            /* background-color: rgba(0,0,0,0.2); 
+               border-radius: 20px;
+               padding: 20px; */
         }
 
         /* ШАПКА */
         .header {
             margin-bottom: 25px;
+            /* Если на вашем фоне уже есть логотип, этот блок можно скрыть, добавив display: none; */
         }
 
         .logo-area {
             width: 120px;
             height: 120px;
-            background-color: white;
+            /* Убрал белый фон у лого, чтобы сливался с общим фоном */
+            /* background-color: white; */
             border-radius: 50%;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            /* Убрал рамку, можно вернуть если нужно: border: 4px solid rgba(255, 255, 255, 0.2); */
+            /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
             overflow: hidden;
         }
         
         .logo-area img {
-            width: 90%; 
+            width: 100%; 
             height: auto;
+            /* Если логотип PNG с прозрачностью, он отлично встанет */
         }
 
         h1 {
@@ -62,13 +76,14 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7); /* Усилил тень для читаемости на любом фоне */
         }
         
         p.subtitle {
             font-size: 14px;
-            opacity: 0.9;
+            opacity: 1;
             font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7); /* Тень для подзаголовка */
         }
 
         /* СПИСОК КНОПОК */
@@ -90,15 +105,15 @@
             display: flex;
             align-items: center;
             transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             position: relative;
             min-height: 75px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
         }
 
         .link-card:active {
             transform: scale(0.98);
-            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         /* ИКОНКА СЛЕВА */
@@ -130,6 +145,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .card-title {
@@ -145,7 +161,7 @@
 
         .card-desc {
             font-size: 11px;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-top: 3px;
             line-height: 1.2;
             font-weight: 400;
@@ -174,8 +190,9 @@
         .footer {
             margin-top: auto;
             font-size: 12px;
-            opacity: 0.5;
+            opacity: 0.7;
             padding-top: 20px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
     </style>
@@ -186,7 +203,7 @@
         
         <div class="header">
             <div class="logo-area">
-                <span style="font-size: 50px;">🎩</span>
+                 <span style="font-size: 50px;">🎩</span>
             </div>
             <h1>ВЫБЕРИТЕ СВОЙ НАБОР</h1>
             <p class="subtitle">Нажмите на кнопку</p>
@@ -259,7 +276,7 @@
                     <img src="images/set_orange.png" alt="Orange set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">10 ВЗРЫВНЫХ ФОКУСОВ (ОРАНЖЕВЫЙ)</span>
+                    <span class="card-title">10 ВЗРЫВНЫХ (ОРАНЖЕВЫЙ)</span>
                     <span class="card-desc">Поролоновые шарики, резинки.</span>
                 </div>
             </a>
