@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин фокусов "Дело в Шляпе"</title>
+    <title>"Дело в Шляпе"</title>
     <style>
-        /* Общие настройки */
+        /* СБРОС СТИЛЕЙ */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            /* Красный фон с эффектом затемнения по краям (как кулисы) */
-            background: radial-gradient(circle at center, #d32f2f 0%, #8e0000 100%);
+            /* Красный фон с эффектом затемнения (имитация кулис) */
+            background: radial-gradient(circle at center, #db3636 0%, #8a0000 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 20px 15px;
             color: white;
         }
 
-        /* Контейнер для контента (чтобы на ПК не было слишком широко) */
+        /* КОНТЕЙНЕР (ограничивает ширину на ПК) */
         .container {
             width: 100%;
-            max-width: 480px; /* Ширина мобильного экрана */
+            max-width: 480px; 
             text-align: center;
         }
 
-        /* Логотип и заголовок */
+        /* ШАПКА */
         .header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        .logo-placeholder {
+        .logo-area {
             width: 120px;
             height: 120px;
             background-color: white;
@@ -45,65 +46,74 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             overflow: hidden;
         }
         
-        .logo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .logo-area img {
+            width: 90%; 
+            height: auto;
         }
 
         h1 {
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
             margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
         
-        p {
+        p.subtitle {
             font-size: 14px;
             opacity: 0.9;
+            font-weight: 400;
         }
 
-        /* Стили кнопок */
+        /* СПИСОК КНОПОК */
         .links-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            padding-bottom: 40px;
         }
 
+        /* СТИЛЬ САМОЙ КНОПКИ */
         .link-card {
-            background-color: #6a9ae2; /* Приятный синий цвет как на скриншоте */
-            background: linear-gradient(90deg, #6a9ae2 0%, #5b8bd6 100%);
+            /* Голубой градиент как на фото */
+            background: linear-gradient(180deg, #8ab4f8 0%, #669df6 100%);
             color: white;
             text-decoration: none;
-            border-radius: 50px; /* Полное скругление */
-            padding: 10px 20px;
+            border-radius: 50px; /* Сильное скругление */
+            padding: 8px 10px;
             display: flex;
             align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.1s, box-shadow 0.1s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             position: relative;
-            min-height: 70px;
+            min-height: 75px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .link-card:active {
             transform: scale(0.98);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
         }
 
-        /* Круглая картинка внутри кнопки */
+        /* ИКОНКА СЛЕВА */
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
-            background-color: #fff;
+            background-color: #fff; /* Белый фон под картинкой */
             flex-shrink: 0;
-            margin-right: 15px;
+            margin-right: 12px;
             overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card-icon img {
@@ -112,37 +122,60 @@
             object-fit: cover;
         }
 
-        /* Текст внутри кнопки */
+        /* ТЕКСТ ВНУТРИ */
         .card-text {
             text-align: left;
             flex-grow: 1;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .card-title {
             font-weight: 700;
-            font-size: 15px;
-            line-height: 1.2;
-            display: block;
+            font-size: 15px; /* Размер шрифта заголовка */
+            line-height: 1.1;
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .card-subtitle {
-            font-size: 12px;
+        .card-desc {
+            font-size: 11px;
             opacity: 0.9;
-            margin-top: 2px;
-            display: block;
+            margin-top: 3px;
+            line-height: 1.2;
+            font-weight: 400;
         }
 
-        /* Ярлык NEW */
+        /* ПЛАШКА NEW */
         .badge-new {
-            background-color: #ff4757;
+            background-color: #ff3b30; /* Ярко-красный */
             color: white;
             font-size: 10px;
             padding: 2px 6px;
             border-radius: 4px;
-            font-weight: bold;
-            margin-left: 5px;
-            vertical-align: middle;
+            font-weight: 800;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ПОДВАЛ */
+        .footer {
+            margin-top: auto;
+            font-size: 12px;
+            opacity: 0.5;
+            padding-top: 20px;
         }
 
     </style>
@@ -150,121 +183,123 @@
 <body>
 
     <div class="container">
+        
         <div class="header">
-            <div class="logo-placeholder">
-                <span style="font-size: 50px;">🎩</span> 
-                </div>
-            <h1>Выберите ваш набор</h1>
-            <p>Нажмите на кнопку, чтобы скачать файлы</p>
+            <div class="logo-area">
+                <span style="font-size: 50px;">🎩</span>
+            </div>
+            <h1>ВЫБЕРИТЕ СВОЙ НАБОР</h1>
+            <p class="subtitle">Нажмите на кнопку</p>
         </div>
 
         <div class="links-list">
 
             <a href="https://disk.yandex.ru/d/7GCK3lh-fGtkrg" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/top-hat_1f3a9.png" alt="icon">
+                    <img src="images/set1.png" alt="75 set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">75 Лучших Фокусов <span class="badge-new">NEW</span></span>
-                    <span class="card-subtitle">Версия 2025-2026</span>
+                    <span class="card-title">75 ЛУЧШИХ ФОКУСОВ <span class="badge-new">NEW</span></span>
+                    <span class="card-desc">Версия 2025-2026. Максимальный арсенал.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/ks6h36c_VHd1rg" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/top-hat_1f3a9.png" alt="icon">
+                    <img src="images/set1.png" alt="75 set classic">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">75 Лучших Фокусов</span>
-                    <span class="card-subtitle">Классическая версия</span>
+                    <span class="card-title">75 ЛУЧШИХ ФОКУСОВ</span>
+                    <span class="card-desc">Классическая полная версия курса.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/WjI7o6WA7RGRQw" class="link-card" target="_blank">
                 <div class="card-icon">
-                     <img src="https://emojigraph.org/media/apple/magic-wand_1fa84.png" alt="icon">
+                    <img src="images/set_new_50.png" alt="50 set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">50 Лучших Фокусов</span>
-                    <span class="card-subtitle">Сильная база</span>
+                    <span class="card-title">50 ЛУЧШИХ ФОКУСОВ</span>
+                    <span class="card-desc">Сильная база и топовые трюки.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/0VVD1y_ZakwGpQ" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/top-hat_1f3a9.png" alt="icon">
+                    <img src="images/set_new_35.png" alt="35 set new">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">35 Лучших Фокусов <span class="badge-new">NEW</span></span>
-                    <span class="card-subtitle">Версия 2025-2026</span>
+                    <span class="card-title">35 ЛУЧШИХ ФОКУСОВ <span class="badge-new">NEW</span></span>
+                    <span class="card-desc">Версия 2025-2026.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/Hc1yBffG4BOE5Q" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/top-hat_1f3a9.png" alt="icon">
+                    <img src="images/set_new_35.png" alt="35 set classic">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">35 Лучших Фокусов</span>
-                    <span class="card-subtitle">Классика 25+10</span>
-                </div>
-            </a>
-
-            <a href="https://disk.yandex.ru/d/AvjMx4kI9k0KDw" class="link-card" target="_blank">
-                <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/performing-arts_1f3ad.png" alt="icon">
-                </div>
-                <div class="card-text">
-                    <span class="card-title">10 Взрывных (Зелёный)</span>
-                    <span class="card-subtitle">Купюры и резинки</span>
-                </div>
-            </a>
-
-            <a href="https://disk.yandex.ru/d/aJc0aCWHA4CiQw" class="link-card" target="_blank">
-                <div class="card-icon">
-                     <img src="https://emojigraph.org/media/apple/joker_1f0cf.png" alt="icon">
-                </div>
-                <div class="card-text">
-                    <span class="card-title">10 Взрывных (Синий)</span>
-                    <span class="card-subtitle">Печенье, трость, стаканы</span>
+                    <span class="card-title">35 ЛУЧШИХ ФОКУСОВ</span>
+                    <span class="card-desc">Классическая линейка 25+10.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/3OTNh2-HgbyW1A" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/crystal-ball_1f52e.png" alt="icon">
+                    <img src="images/set_purple.png" alt="Purple set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">10 Взрывных (Фиолетовый)</span>
-                    <span class="card-subtitle">Купюры, карты, платки</span>
+                    <span class="card-title">10 ВЗРЫВНЫХ ФОКУСОВ (ФИОЛЕТОВЫЙ)</span>
+                    <span class="card-desc">Купюры, карты и платки.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/gFE5pkX7C9um5Q" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/sparkles_2728.png" alt="icon">
+                    <img src="images/set_orange.png" alt="Orange set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">10 Взрывных (Оранжевый)</span>
-                    <span class="card-subtitle">Поролоновые шарики</span>
+                    <span class="card-title">10 ВЗРЫВНЫХ ФОКУСОВ (ОРАНЖЕВЫЙ)</span>
+                    <span class="card-desc">Поролоновые шарики, резинки.</span>
+                </div>
+            </a>
+
+            <a href="https://disk.yandex.ru/d/aJc0aCWHA4CiQw" class="link-card" target="_blank">
+                <div class="card-icon">
+                    <img src="images/set_blue.png" alt="Blue set">
+                </div>
+                <div class="card-text">
+                    <span class="card-title">10 ВЗРЫВНЫХ ФОКУСОВ (СИНИЙ)</span>
+                    <span class="card-desc">Печенье, трость, стаканы.</span>
+                </div>
+            </a>
+
+            <a href="https://disk.yandex.ru/d/AvjMx4kI9k0KDw" class="link-card" target="_blank">
+                <div class="card-icon">
+                    <img src="images/set_green.png" alt="Green set">
+                </div>
+                <div class="card-text">
+                    <span class="card-title">10 ВЗРЫВНЫХ ФОКУСОВ (ЗЕЛЁНЫЙ)</span>
+                    <span class="card-desc">Купюры, резинки и пакеты.</span>
                 </div>
             </a>
 
             <a href="https://disk.yandex.ru/d/g8kHv3nGNcUz9A" class="link-card" target="_blank">
                 <div class="card-icon">
-                    <img src="https://emojigraph.org/media/apple/fire_1f525.png" alt="icon">
+                    <img src="images/set5.png" alt="5 set">
                 </div>
                 <div class="card-text">
-                    <span class="card-title">5 Лучших Фокусов</span>
-                    <span class="card-subtitle">Сильнейшие трюки</span>
+                    <span class="card-title">5 ЛУЧШИХ ФОКУСОВ</span>
+                    <span class="card-desc">Сильнейшие трюки + бонусы.</span>
                 </div>
             </a>
 
         </div>
-
-        <div style="margin-top: 30px; font-size: 12px; opacity: 0.6;">
-            Магазин фокусов и иллюзий «ДЕЛО В ШЛЯПЕ»
+        
+        <div class="footer">
+            © 2025 Дело в Шляпе
         </div>
+
     </div>
 
 </body>
